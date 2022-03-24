@@ -17,18 +17,17 @@ form.addEventListener("submit", event=>{
   let amount = Number(form.elements.amount.value);
   let delay = Number(form.elements.delay.value);
   const step = Number(form.elements.step.value);
-  let position = 1;
 
-for(amount, delay, position; amount>0; amount-=1, delay+=step, position+=1){
-  createPromise(position, delay)
-  .then(() => {
-    Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-    console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+for(let i=1; i<=amount; i+=1){
+  createPromise(i, delay)
+  .then((result) => {
+    Notiflix.Notify.success(result);
   })
-  .catch(() => {
-    Notiflix.Notify.warning(`❌ Rejected promise ${position} in ${delay}ms`);
-    console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-  });
+  .catch((result) => {
+    Notiflix.Notify.warning(result);
+  }
+ );
+ delay+=step;
 }
 })
 
