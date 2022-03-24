@@ -50,6 +50,7 @@ function convertMs(ms) {
   button.addEventListener("click", ()=>{
     timerId = setInterval(()=>{
       input.setAttribute("disabled", "");
+      button.setAttribute("disabled", "");
       time = convertMs(selectedDate-new Date().getTime());
       if(time.days<10){
       document.querySelector("span[data-days]").innerHTML=addLeadingZero(String(time.days));}
